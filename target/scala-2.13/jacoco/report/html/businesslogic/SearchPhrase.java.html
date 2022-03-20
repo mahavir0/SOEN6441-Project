@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SearchPhrase.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">businesslogic</a> &gt; <span class="el_source">SearchPhrase.java</span></div><h1>SearchPhrase.java</h1><pre class="source lang-java linenums">/**
+ * 
+ */
+package businesslogic;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Scanner;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import model.Resultlist;
+import model.Searchphraseresult;
+/**
+ * &lt;p&gt;This class is used to fetch projects of the entered search string&lt;/p&gt;
+ * @author Group Task
+ */
+public class SearchPhrase {
+<span class="fc" id="L29">	public String API = &quot;https://www.freelancer.com/api/projects/0.1/projects/active?previw_description=true&amp;job_details=1&amp;limit=250&amp;compact=1&amp;languages[]=en&amp;query=&quot;;</span>
+<span class="fc" id="L30">	public LinkedHashMap&lt;String, Resultlist&gt; resultmap = null;</span>
+
+	/**
+	 * &lt;p&gt;This is a constructor that initializes object resultmap&lt;/p&gt;
+	 */
+<span class="fc" id="L35">	public SearchPhrase() {</span>
+<span class="fc" id="L36">		resultmap = new LinkedHashMap&lt;String, Resultlist&gt;();</span>
+<span class="fc" id="L37">	}</span>
+
+	/**
+	 * &lt;p&gt;This method calls the getPhraseResult method&lt;/p&gt;
+	 * @param searchPhrase It is the search string entered by user
+	 * @return LinkedHashMap containing the results of project details for searchPhrase
+	 */
+	public CompletionStage&lt;LinkedHashMap&lt;String, Resultlist&gt;&gt; getResult(String searchPhrase){
+<span class="fc" id="L45">		return CompletableFuture.supplyAsync(()-&gt; this.getPhraseResult(searchPhrase));</span>
+	}
+
+	/** &lt;p&gt;The method calls the api to get 10 latest projects for entered Search string&lt;/p&gt;
+	 * @param searchPhrase It is the search string entered by user
+	 * @return LinkedHashMap containing the list of 10 latest projects
+	 */
+	public LinkedHashMap&lt;String, Resultlist&gt; getPhraseResult(String searchPhrase){
+<span class="fc" id="L53">		List&lt;Searchphraseresult&gt; sp = new ArrayList&lt;Searchphraseresult&gt;();</span>
+<span class="fc" id="L54">		Resultlist r1 = new Resultlist();</span>
+<span class="fc" id="L55">		List&lt;String&gt; descriptions = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L56">		SearchFleschIndex sfi = new SearchFleschIndex();</span>
+		
+<span class="fc bfc" id="L58" title="All 2 branches covered.">		if(resultmap.containsKey(searchPhrase)) {</span>
+<span class="fc" id="L59">			resultmap = this.checkPhraseResult(searchPhrase, resultmap);</span>
+		}else {
+<span class="fc" id="L61">			String[] s = searchPhrase.split(&quot; &quot;);</span>
+<span class="fc" id="L62">			String searchQuery = &quot;\&quot;&quot;;</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">			for(int i=0;i&lt;s.length;i++) {</span>
+<span class="fc" id="L64">				searchQuery+=s[i]+&quot;%20&quot;;</span>
+			}
+<span class="fc" id="L66">			searchQuery+=&quot;\&quot;&quot;;</span>
+			try {
+<span class="fc" id="L68">				URL url = new URL(this.API+searchQuery);</span>
+<span class="fc" id="L69">	    		HttpURLConnection conn = (HttpURLConnection)url.openConnection();</span>
+<span class="fc" id="L70">	    		conn.setRequestMethod(&quot;GET&quot;);</span>
+<span class="fc" id="L71">	    		conn.connect();</span>
+<span class="pc bpc" id="L72" title="1 of 2 branches missed.">	    		if(conn.getResponseCode() == 200) {</span>
+<span class="fc" id="L73">					Scanner scan = new Scanner(url.openStream());</span>
+<span class="fc" id="L74">					String temp=&quot;&quot;;</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">					while(scan.hasNext()) {</span>
+<span class="fc" id="L76">						temp = temp + scan.nextLine();</span>
+	                }
+<span class="fc" id="L78">					JSONObject json = new JSONObject(temp);</span>
+<span class="fc" id="L79">					JSONObject result = json.getJSONObject(&quot;result&quot;);</span>
+<span class="fc" id="L80">					JSONArray projects = (JSONArray) result.getJSONArray(&quot;projects&quot;);</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">					for(int i=0;i&lt;projects.length();i++) {</span>
+<span class="fc" id="L82">						JSONObject obj = projects.getJSONObject(i);</span>
+<span class="fc" id="L83">						Searchphraseresult tempsr = new Searchphraseresult();</span>
+<span class="fc bfc" id="L84" title="All 2 branches covered.">						if(i&lt;10){</span>
+<span class="fc" id="L85">							tempsr.setOwner_id(obj.get(&quot;owner_id&quot;).toString());</span>
+<span class="fc" id="L86">							tempsr.setIndex(i);</span>
+<span class="fc" id="L87">							tempsr.setPrevDesc(obj.get(&quot;preview_description&quot;).toString());</span>
+<span class="fc" id="L88">							descriptions.add(obj.get(&quot;preview_description&quot;).toString());</span>
+<span class="fc" id="L89">							Date date = new Date(Long.parseLong(obj.get(&quot;submitdate&quot;).toString()+&quot;000&quot;));</span>
+<span class="fc" id="L90">							DateFormat simple = new SimpleDateFormat(&quot;dd MMM yyyy&quot;);</span>
+<span class="fc" id="L91">							tempsr.setDate(simple.format(date));</span>
+<span class="fc" id="L92">							tempsr.setTitle(obj.get(&quot;title&quot;).toString());</span>
+<span class="fc" id="L93">							tempsr.setType(obj.get(&quot;type&quot;).toString());</span>
+<span class="fc" id="L94">							LinkedHashMap&lt;String, String&gt; skillsmap = new LinkedHashMap&lt;String, String&gt;();</span>
+<span class="fc" id="L95">							JSONArray skills = obj.getJSONArray(&quot;jobs&quot;);</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">							for(int j=0;j&lt;skills.length();j++) {</span>
+<span class="fc" id="L97">								JSONObject skill = skills.getJSONObject(j);</span>
+<span class="fc" id="L98">								skillsmap.put( skill.get(&quot;name&quot;).toString() , skill.get(&quot;id&quot;).toString() );</span>
+							}
+<span class="fc" id="L100">							tempsr.setSkills(skillsmap);</span>
+<span class="fc" id="L101">							sp.add(tempsr);</span>
+<span class="fc" id="L102">						}else{</span>
+<span class="fc" id="L103">							descriptions.add(obj.get(&quot;preview_description&quot;).toString());</span>
+						}
+					}
+<span class="fc" id="L106">					r1.setResult(sp);</span>
+<span class="fc" id="L107">					r1.setDescriptions(descriptions);</span>
+<span class="fc" id="L108">					r1.setFleschIndex(sfi.getFleshIndex(descriptions));</span>
+<span class="fc" id="L109">					r1.setEdLevel(sfi.getEducationLevel(r1.getFleschIndex()));</span>
+<span class="fc" id="L110">					r1.setFkgl(sfi.getFkgl(r1.getFleschIndex()));</span>
+<span class="fc" id="L111">					this.resultmap.put(searchPhrase,r1);</span>
+	            }
+<span class="fc" id="L113">			}catch(Exception e) {</span>
+<span class="fc" id="L114">				System.out.println(e);</span>
+<span class="fc" id="L115">			}</span>
+		}
+<span class="fc" id="L117">		return this.reverseLinkedHashMap(this.resultmap);</span>
+	}
+
+	/**
+	 * &lt;p&gt;This method reverses a given LinkedHashMap&lt;/p&gt;
+	 * @param resultmap It is a LinkedHashMap of search string and result having list of projects
+	 * @return It returns a reversed LinkedHashMap
+	 */
+	public LinkedHashMap&lt;String, Resultlist&gt; reverseLinkedHashMap(LinkedHashMap&lt;String, Resultlist&gt; resultmap){
+<span class="fc" id="L126">		LinkedHashMap&lt;String, Resultlist&gt; reversed = new LinkedHashMap&lt;String, Resultlist&gt;();</span>
+<span class="fc" id="L127">		List&lt;String&gt; keys = new ArrayList&lt;String&gt;(resultmap.keySet());</span>
+<span class="fc" id="L128">		Collections.reverse(keys);</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">		for(String key: keys) {</span>
+<span class="fc" id="L130">			reversed.put(key, resultmap.get(key));</span>
+<span class="fc" id="L131">		}</span>
+<span class="fc" id="L132">		return reversed;</span>
+	}
+
+	/**
+	 * &lt;p&gt;This method checks if the search results are already available to display or not&lt;/p&gt;
+	 * @param phrase Search String
+	 * @param resultmap LinkedHashMap containing search results
+	 * @return It returns the search results of a phrase if they are already present in the HashMap
+	 */
+	public LinkedHashMap&lt;String, Resultlist&gt; checkPhraseResult(String phrase, LinkedHashMap&lt;String, Resultlist&gt; resultmap){
+<span class="fc" id="L142">		LinkedHashMap&lt;String, Resultlist&gt; temp = resultmap;</span>
+<span class="pc bpc" id="L143" title="1 of 2 branches missed.">		if(temp.containsKey(phrase)) {</span>
+<span class="fc" id="L144">			Resultlist rs = new Resultlist();</span>
+<span class="fc" id="L145">			rs = temp.get(phrase);</span>
+<span class="fc" id="L146">			temp.remove(phrase);</span>
+<span class="fc" id="L147">			temp.put(phrase, rs);</span>
+		}
+<span class="fc" id="L149">		return temp;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

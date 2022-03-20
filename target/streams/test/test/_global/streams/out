@@ -1,0 +1,174 @@
+[0m[[0m[0mdebug[0m] [0m[0mjavaOptions: Vector(-Djacoco-agent.destfile=C:\Users\Admin\Desktop\SOEN6441-Project-harshal\target\scala-2.13\jacoco\data\jacoco.exec)[0m
+[0m[[0m[0mdebug[0m] [0m[0mForking tests - parallelism = false[0m
+[0m[[0m[0mdebug[0m] [0m[0mCreate a single-thread test executor[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunner for com.novocode.junit.JUnitFramework produced 11 initial tasks for 11 tests.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(model.ProfileTest, sbt.ForkMain$AnnotatedFingerscan@11dc7647, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestEmailverified[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestEmailverified[0m finished, took 0.039 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestRecommendations[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestRecommendations[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestTimezone[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestTimezone[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestTitle[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestTitle[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestCity[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestCity[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestCode[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestCode[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestRole[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestRole[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestSign[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestSign[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestRegistrationdate[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestRegistrationdate[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestId[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestId[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestPrimarylanguage[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestPrimarylanguage[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestProjects[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestProjects[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestProfiledescription[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestProfiledescription[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestChosenrole[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestChosenrole[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestLimitedAccount[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestLimitedAccount[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestUsername[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestUsername[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestCompany[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestCompany[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestCountry[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestCountry[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestHourlyrate[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestHourlyrate[0m finished, took 0.003 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestDisplayname[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestDisplayname[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestPublicname[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestPublicname[0m finished, took 0.002 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestQualification[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestQualification[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestSkills[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestSkills[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestCurrencyname[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProfileTest[0m.[36mtestCurrencyname[0m finished, took 0.002 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 24 total, 0.073s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 24 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(model.SearchphraseresultTest, sbt.ForkMain$AnnotatedFingerscan@320d9926, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestOwnerid[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestOwnerid[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestIndex[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestIndex[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestTitle[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestTitle[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestDate[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestDate[0m finished, took 0.002 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestType[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestType[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestPrevdesc[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestPrevdesc[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestWordtstats[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestWordtstats[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestSkills[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mSearchphraseresultTest[0m.[36mtestSkills[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 8 total, 0.007s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 8 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(model.ResultlistTest, sbt.ForkMain$AnnotatedFingerscan@4d02b0a5, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mResultlistTest[0m.[36mtestFleschIndex[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mResultlistTest[0m.[36mtestFleschIndex[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mResultlistTest[0m.[36mtestFkgl[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mResultlistTest[0m.[36mtestFkgl[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mResultlistTest[0m.[36mtestResult[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mResultlistTest[0m.[36mtestResult[0m finished, took 0.003 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mResultlistTest[0m.[36mtestDescription[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mResultlistTest[0m.[36mtestDescription[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mResultlistTest[0m.[36mtestEdLevel[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mResultlistTest[0m.[36mtestEdLevel[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 5 total, 0.007s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 5 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(ControllersTest.HomeControllerTest, sbt.ForkMain$AnnotatedFingerscan@f80ea51, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest ControllersTest.[33mHomeControllerTest[0m.[36mtestIndex[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest ControllersTest.[33mHomeControllerTest[0m.[36mtestIndex[0m finished, took 6.368 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest ControllersTest.[33mHomeControllerTest[0m.[36mtestSkill[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest ControllersTest.[33mHomeControllerTest[0m.[36mtestSkill[0m finished, took 0.865 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest ControllersTest.[33mHomeControllerTest[0m.[36mtestProfile[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest ControllersTest.[33mHomeControllerTest[0m.[36mtestProfile[0m finished, took 2.959 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest ControllersTest.[33mHomeControllerTest[0m.[36mtestReadability[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest ControllersTest.[33mHomeControllerTest[0m.[36mtestReadability[0m finished, took 1.452 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest ControllersTest.[33mHomeControllerTest[0m.[36mtestWordStat[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest ControllersTest.[33mHomeControllerTest[0m.[36mtestWordStat[0m finished, took 1.064 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest ControllersTest.[33mHomeControllerTest[0m.[36mtestIndvStat[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest ControllersTest.[33mHomeControllerTest[0m.[36mtestIndvStat[0m finished, took 1.015 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 6 total, 13.726s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 6 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(BusinessLogic.WordStatsTest, sbt.ForkMain$AnnotatedFingerscan@5192d443, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mWordStatsTest[0m.[36mstatsTest[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mWordStatsTest[0m.[36mstatsTest[0m finished, took 0.397 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mWordStatsTest[0m.[36mindstatsTest[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mWordStatsTest[0m.[36mindstatsTest[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 2 total, 0.397s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 2 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(model.ProjectinfoTest, sbt.ForkMain$AnnotatedFingerscan@63f9a355, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProjectinfoTest[0m.[36mtesttitle[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProjectinfoTest[0m.[36mtesttitle[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProjectinfoTest[0m.[36mtestProjectid[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProjectinfoTest[0m.[36mtestProjectid[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProjectinfoTest[0m.[36mtestSubmitdate[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProjectinfoTest[0m.[36mtestSubmitdate[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProjectinfoTest[0m.[36mtestDescription[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest model.[33mProjectinfoTest[0m.[36mtestDescription[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 4 total, 0.003s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 4 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(BusinessLogic.SearchPhraseTest, sbt.ForkMain$AnnotatedFingerscan@31f954a0, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mSearchPhraseTest[0m.[36mphraseTest[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mSearchPhraseTest[0m.[36mphraseTest[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 1 total, 0.0s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 1 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(BusinessLogic.SearchProfileTest, sbt.ForkMain$AnnotatedFingerscan@73d3d1cc, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mSearchProfileTest[0m.[36mprofileTest[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mSearchProfileTest[0m.[36mprofileTest[0m finished, took 0.001 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 1 total, 0.001s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 1 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(BusinessLogic.SessionTest, sbt.ForkMain$AnnotatedFingerscan@77eb5855, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mSessionTest[0m.[36mtestGetSession[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mSessionTest[0m.[36mtestGetSession[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mSessionTest[0m.[36mtestSetSession[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mSessionTest[0m.[36mtestSetSession[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 2 total, 0.001s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 2 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(BusinessLogic.SearchSkillTest, sbt.ForkMain$AnnotatedFingerscan@8de3598, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mSearchSkillTest[0m.[36mskillTest[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mSearchSkillTest[0m.[36mskillTest[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 1 total, 0.0s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 1 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0m  Running TaskDef(BusinessLogic.SearchFleschIndexTest, sbt.ForkMain$AnnotatedFingerscan@766dd347, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run started[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mSearchFleschIndexTest[0m.[36mfleschIndexTest[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mSearchFleschIndexTest[0m.[36mfleschIndexTest[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mSearchFleschIndexTest[0m.[36meducationLevelTest[0m started[0m
+[0m[[0m[0mdebug[0m] [0m[0mTest BusinessLogic.[33mSearchFleschIndexTest[0m.[36meducationLevelTest[0m finished, took 0.0 sec[0m
+[0m[[0m[0mdebug[0m] [0m[0m[34mTest run finished: [0m[34m0 failed[0m[34m, [0m[34m0 ignored[0m[34m, 2 total, 0.001s[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0m    Produced 0 nested tasks and 2 events.[0m
+[0m[[0m[0mdebug[0m] [0m[0mSummary for JUnit not available.[0m
+[0m[[0m[0minfo[0m] [0m[0mPassed: Total 56, Failed 0, Errors 0, Passed 56[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	model.ProfileTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	model.SearchphraseresultTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	model.ResultlistTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ControllersTest.HomeControllerTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BusinessLogic.WordStatsTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	model.ProjectinfoTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BusinessLogic.SearchPhraseTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BusinessLogic.SearchProfileTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BusinessLogic.SessionTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BusinessLogic.SearchSkillTest[0m
+[0m[[0m[0mdebug[0m] [0m[0m	BusinessLogic.SearchFleschIndexTest[0m

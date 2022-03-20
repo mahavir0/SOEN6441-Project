@@ -1,0 +1,199 @@
+@import model.Profile
+@import model.projectInfo
+@(searchProfile: Map[String, Profile])
+
+@main("FreeLancelot") {
+<center>
+    <article style="margin-top:50px;">
+        <div>
+            @if(searchProfile != null) {
+            @for((searchTerms, user) <- searchProfile){
+            <h2>Owner Details</h2>
+            <b>Publicname : @searchTerms</b>
+            <style>
+                        table {
+                            border-collapse: collapse;
+                        }
+                        th {
+                            background-color:lightskyblue;
+                            Color:white;
+                        }
+                        th, td {
+                            text-align:center;
+                            border:1px solid black;
+                            padding:5px
+
+                        }
+                    </style>
+            <table border="1px" >
+                @if(user.getId() != null) {
+                <tr>
+                    <th>Owner_id</th>
+                    <td>@user.getId()</td>
+                </tr>
+                }
+                @if(user.getUsername() != null){
+                <tr>
+                    <th>Username</th>
+                    <td>@user.getUsername()</td>
+                </tr>
+                }
+
+                @if(user.getCountry() != null){
+                <tr>
+                    <th>Country</th>
+                    <td>@user.getCountry()</td>
+                </tr>
+                }
+                @if(user.getCity() != null){
+                <tr>
+                    <th>City</th>
+                    <td>@user.getCity()</td>
+                </tr>
+                }
+                @if(user.getRole() != null){
+                <tr>
+                    <th>role</th>
+                    <td>@user.getRole()</td>
+                </tr>
+                }
+                @if(user.getChosenrole() != null){
+                <tr>
+                    <th>Chosen_role</th>
+                    <td>@user.getChosenrole()</td>
+                </tr>
+                }
+                @if(user.getProfiledescription() != null){
+                <tr>
+                    <th>Profiledescription</th>
+                    <td>@user.getProfiledescription()</td>
+                </tr>
+                }
+                @if(user.getRecommendations() != null){
+                <tr>
+                    <th>Recommendations</th>
+                    <td>@user.getRecommendations()</td>
+                </tr>
+                }
+                @if(user.getRegistrationdate() != null){
+                <tr>
+                    <th>RegstationDate</th>
+                    <td>@user.getRegistrationdate()</td>
+                </tr>
+                }
+                @if(user.getCompany() != null){
+                <tr>
+                    <th>Company</th>
+                    <td>@user.getCompany()</td>
+                </tr>
+                }
+                @if(user.getHourylyrate() != null){
+                <tr>
+                    <th>HourylyRate</th>
+                    <td>@user.getHourylyrate()</td>
+                </tr>
+                }
+                @if(user.getPrimarylanguage() != null){
+                <tr>
+                    <th>Primarylanguage</th>
+                    <td>@user.getPrimarylanguage()</td>
+                </tr>
+                }
+                @if(user.getLimitedaccount() != null){
+                <tr>
+                    <th>Limitedaccount</th>
+                    <td>@user.getLimitedaccount()</td>
+                </tr>
+                }
+                @if(user.getCode() != null){
+                <tr>
+                    <th>CountryCode</th>
+                    <td>@user.getCode()</td>
+                </tr>
+                }
+                @if(user.getSign() != null){
+                <tr>
+                    <th>CountrySign</th>
+                    <td>@user.getSign()</td>
+                </tr>
+                }
+                @if(user.getCurrencyname() != null){
+                <tr>
+                    <th>CurrencyName</th>
+                    <td>@user.getCurrencyname()</td>
+                </tr>
+                }
+                @if(user.getPublicname() != null){
+                <tr>
+                    <th>Publicname</th>
+                    <td>@user.getPublicname()</td>
+                </tr>
+                }
+                @if(user.getEmailverified() != null){
+                <tr>
+                    <th>Email_Verified</th>
+                    <td>@user.getEmailverified()</td>
+                </tr>
+                }
+                @if(user.getTimezone() != null){
+                <tr>
+                    <th>TimeZone</th>
+                    <td>@user.getTimezone()</td>
+                </tr>
+                }
+                @if(user.getSkills().size()>0){
+                <tr>
+                    <th>Skills</th>
+                    <td>@for((key,value) <- user.getSkills()){
+                        @key
+                        }
+                    </td>
+                </tr>
+                }else{
+                <tr>
+                    <th>Skills</th>
+                    <td>Users does not have any skills</td>
+                </tr>
+                }
+                @if( user.getQualifications().size()>0){
+                <tr>
+                    <th>Qualifications</th>
+                    <td>@for((key,value) <- user.getQualifications()){
+                        @key
+                        }
+                    </td>
+                </tr>
+                }else{
+                <tr>
+                    <th>Qualifications</th>
+                    <td>Users does not have any Qualifications</td>
+                </tr>
+                }
+            </table>
+            <h3>Projects</h3>
+            <table>
+                @if( user.getProjects().size()>0){
+                <tr>
+                    <th>Project Id</th>
+                    <th>Submit Date</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                </tr>
+                @for(projects <- user.getProjects()){
+                <tr>
+                    <td>@projects.getProjectid()</td>
+                    <td>@projects.getSubmitdate()</td>
+                    <td>@projects.getTitle()</td>
+                    <td>@projects.getDescription()</td>
+                </tr>
+                }
+                }else{
+                <p>This user does not have project</p>
+                }
+            </table>
+            }
+            }
+        </div>
+    </article>
+</center>
+}

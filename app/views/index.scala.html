@@ -1,0 +1,119 @@
+@import model.Searchphraseresult
+@import model.Resultlist
+@(searchResults: Map[String, Resultlist])
+
+	@main("FreeLancelot") {
+		<center>
+			<article style="margin-top:50px;">
+				<h1>Welcome to FreeLancelot</h1>
+				<form action="/" method="GET">
+					<input type="text" name="searchPhrase" placeholder="Enter search terms"/>
+					<input id="submitbtn" type="submit" value="Go!" />
+					<br />
+					<input type="text" id="hiddenId" name="sessionId" value="" />
+				</form>
+				<div>
+				@if(searchResults != null) {
+					@for((searchTerms, searchResultlist) <- searchResults){
+
+						@if(searchResultlist.getResult().size()>0){
+							<p>Search terms : @searchTerms : Flesh reading Ease Index: @searchResultlist.getFleschIndex()  FKGL : @searchResultlist.getFkgl()</p>
+							<a href="@routes.HomeController.wordStat(searchTerms)">Global Stats</a>
+							<table>
+								<tr>
+									<th>Owner_id</th>
+									<th>Date</th>
+									<th>Title</th>
+									<th>Type</th>
+									<th>Skills</th>
+									<th></th>
+									<th></th>
+									<th>Education Level</th>
+								</tr>
+								@for(result <- searchResultlist.getResult()){
+									<tr>
+										<td><a href='@routes.HomeController.profile(result.getOwner_id())'>@result.getOwner_id()</a></td>
+										<td>@result.getDate()</td>
+										<td>@result.getTitle()</td>
+										<td>@result.getType()</td>
+										<td>@for((key,value) <- result.getSkills()){
+											<u><a href="@routes.HomeController.skill(value,key)" target="_blank">@key</a></u>
+										}
+										</td>
+										<td><a href="@routes.HomeController.indvStat(searchTerms, result.getIndex())">Stats</a></td>
+										<td><a href="@routes.HomeController.readability(searchTerms, result.getIndex())">Readability</a></td>
+										<td>@searchResultlist.getEdLevel()</td>
+									</tr>
+								}
+							</table>
+						}else{
+							<p>Search terms : @searchTerms : Flesh reading Ease Index: ##</p>
+							<p>There are no project for the term : @searchTerms</p>
+						}
+					}
+				}
+				</div>
+			</article>
+		</center>
+		<script>
+				const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+				function generateString() {
+					console.log("In the function");
+					let result = ' ';
+					const charactersLength = characters.length;
+					for ( let i = 0; i < 8; i++ ) {
+						result += characters.charAt(Math.floor(Math.random() * charactersLength));
+					}
+					return result;
+				};
+
+				window.onload=function(){
+					var mb = document.getElementById("submitbtn");
+					mb.addEventListener("click", checkCookie);
+					console.log("In the window after loading");
+				};
+
+				function setCookie(id){
+					console.log("setcokkie id "+id);
+					const date = new Date();
+					date.setTime(date.getTime() + (365 * 24 * 60 * 60 * 1000));
+					var expires = "expires="+date.toUTCString();
+					document.cookie = "sessionId="+id+";"+expires+";path=/";
+				};
+
+				function getCookie(){
+					let name = "sessionId=";
+					let spli = document.cookie.split(';');
+					for(var j=0;j < spli.length; j++){
+						let char = spli[j];
+						while(char.charAt(0) == ' ') {
+							char = char.substring(1);
+						}
+						if(char.indexOf(name) == 0) {
+							return char.substring(name.length, char.length);
+						}
+					}
+					id = "";
+					console.log("getcookie id "+id);
+					return id;
+				};
+
+				function checkCookie() {
+					var id = getCookie();
+					console.log("id "+id);
+					if(id != ""){
+						console.log("checkcookie id if not null"+id);
+						//alert(id);
+						document.getElementById("hiddenId").value = id
+					}
+					else{
+						id = generateString();
+						console.log("checkcookie id "+id);
+						if(id != "" && id != null){
+							setCookie(id);
+						}
+					}
+				};
+		</script>
+	}

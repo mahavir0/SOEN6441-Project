@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SearchFleschIndex.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">businesslogic</a> &gt; <span class="el_source">SearchFleschIndex.java</span></div><h1>SearchFleschIndex.java</h1><pre class="source lang-java linenums">package businesslogic;
+
+import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+import java.util.stream.Collectors;
+
+/**
+ * &lt;p&gt;This class is used to find the Flesch Readability Index of a project&lt;/p&gt;
+ * @author Hiren Parmar
+ */
+<span class="fc" id="L12">public class SearchFleschIndex {</span>
+    long wordCount;
+    long sentenceCount;
+    long syllableCount;
+
+    /**
+     * &lt;p&gt;The method calls the getFleschindex and getFkgl methods&lt;/p&gt;
+     * @param desc Description of a project
+     * @return LinkedHashMap containing Flesch Readability Index and FKGL of a project description
+     */
+    public CompletionStage&lt;LinkedHashMap&lt;String, String&gt;&gt; getResult(String desc){
+<span class="fc" id="L23">        List&lt;String&gt; description = new ArrayList&lt;String&gt;();</span>
+<span class="fc" id="L24">        LinkedHashMap&lt;String, String&gt; resultmap = new LinkedHashMap&lt;String, String&gt;();</span>
+<span class="fc" id="L25">        description.add(desc);</span>
+<span class="fc" id="L26">        Integer FlIndex = this.getFleshIndex(description);</span>
+<span class="fc" id="L27">        resultmap.put(&quot;FleshIndex&quot;,FlIndex.toString());</span>
+<span class="fc" id="L28">        resultmap.put(&quot;FKGL&quot;,Float.toString(this.getFkgl(FlIndex)));</span>
+<span class="fc" id="L29">        return CompletableFuture.completedFuture(resultmap);</span>
+    }
+
+    /**
+     * &lt;p&gt;The method calculates the Flesch Readability Index of a project description&lt;/p&gt;
+     * @param desc Description of the project
+     * @return Flesch Readability Index of a description
+     */
+    public Integer getFleshIndex(List&lt;String&gt; desc) {
+
+<span class="fc" id="L39">        wordCount = desc.stream()</span>
+<span class="fc" id="L40">                .map(w -&gt; w.replaceAll(&quot;\\p{Punct}&quot;, &quot;&quot;).split(&quot; &quot;))</span>
+<span class="fc" id="L41">                .flatMap(Arrays::stream)</span>
+<span class="fc" id="L42">                .count();</span>
+<span class="fc" id="L43">        System.out.println(wordCount);</span>
+
+<span class="fc" id="L45">        sentenceCount = desc.stream()</span>
+<span class="fc" id="L46">                .map(w -&gt; w.split(&quot;[!?.:]+&quot;))</span>
+<span class="fc" id="L47">                .flatMap(Arrays::stream)</span>
+<span class="fc" id="L48">                .count();</span>
+<span class="fc" id="L49">        System.out.println(sentenceCount);</span>
+
+<span class="fc" id="L51">        List&lt;String&gt; syllable = desc.stream()</span>
+<span class="fc" id="L52">                .map(o -&gt; o.replaceAll(&quot;[!?.:;]+&quot;, &quot;&quot;).split(&quot; &quot;))</span>
+<span class="fc" id="L53">                .flatMap(Arrays::stream)</span>
+<span class="fc" id="L54">                .map(o -&gt; o.replace(&quot;[0-9]&quot;,&quot;&quot;))</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">                .map(o -&gt; {if(o.length()&lt;=3) o = &quot;a&quot;; return o;})</span>
+<span class="fc" id="L56">                .map(o -&gt; o.toLowerCase().replaceAll(&quot;le$&quot;,&quot;lex&quot;).replaceAll(&quot;es$|ed$|e$&quot;,&quot;&quot;).replaceAll(&quot;[aeiou]{2,}&quot;, &quot;a&quot;).replaceAll(&quot;[^aeiou]&quot;,&quot;&quot;))</span>
+<span class="fc" id="L57">                .collect(Collectors.toList());</span>
+
+<span class="fc" id="L59">        syllableCount = syllable.stream()</span>
+<span class="fc" id="L60">                .map(o -&gt; o.length())</span>
+<span class="fc" id="L61">                .reduce(0, (a,b) -&gt; a+b);</span>
+
+<span class="fc" id="L63">        float fleshIndex = (float) (206.835 - 84.6 *(syllableCount / wordCount) - 1.015 * (wordCount / sentenceCount));</span>
+<span class="fc" id="L64">        return Math.round(fleshIndex);</span>
+
+    }
+
+    /**
+     * &lt;p&gt;This method calculates the Flesch Kincaid Grade Level of the description of the project&lt;/p&gt;
+     * @param fleschIndex FLesch Readability Index of the project
+     * @return Flesch Kincaid Grade Level
+     */
+    public float getFkgl(int fleschIndex){
+<span class="fc" id="L74">        float fkgl = (float)(0.39*(wordCount/sentenceCount)+ 11.8 * (syllableCount/wordCount)-15.59);</span>
+<span class="fc" id="L75">        return fkgl;</span>
+    }
+
+    /**
+     * &lt;p&gt;This method finds the Education Level required by the user to easily read the description&lt;/p&gt;
+     * @param fleschIndex Flesch Readability Index
+     * @return Education level required for user
+     */
+    public String getEducationLevel(int fleschIndex) {
+<span class="fc bfc" id="L84" title="All 2 branches covered.">        if (fleschIndex &gt; 100) {</span>
+<span class="fc" id="L85">            return &quot;Early&quot;;</span>
+<span class="fc bfc" id="L86" title="All 2 branches covered.">        } else if (fleschIndex &gt; 91) {</span>
+<span class="fc" id="L87">            return &quot;5th grade&quot;;</span>
+<span class="fc bfc" id="L88" title="All 2 branches covered.">        } else if (fleschIndex &gt; 81) {</span>
+<span class="fc" id="L89">            return &quot;6th grade&quot;;</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        } else if (fleschIndex &gt; 71) {</span>
+<span class="fc" id="L91">            return &quot;7th grade&quot;;</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">        } else if (fleschIndex &gt; 66) {</span>
+<span class="fc" id="L93">            return &quot;8th grade&quot;;</span>
+<span class="fc bfc" id="L94" title="All 2 branches covered.">        } else if (fleschIndex &gt; 61) {</span>
+<span class="fc" id="L95">            return &quot;9th grade&quot;;</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">        } else if (fleschIndex &gt; 51) {</span>
+<span class="fc" id="L97">            return &quot;High School&quot;;</span>
+<span class="fc bfc" id="L98" title="All 2 branches covered.">        } else if (fleschIndex &gt; 31) {</span>
+<span class="fc" id="L99">            return &quot;Some College&quot;;</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">        } else if (fleschIndex &gt; 0) {</span>
+<span class="fc" id="L101">            return &quot;College Graduate&quot;;</span>
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">        } else if (fleschIndex &lt;= 0) {</span>
+<span class="fc" id="L103">            return &quot;Law School Graduate&quot;;</span>
+        }else {
+<span class="nc" id="L105">            return &quot;&quot;;</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

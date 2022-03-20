@@ -1,0 +1,39 @@
+@import model.Searchphraseresult
+@import model.Resultlist
+@(searchResults: Map[String, Resultlist])
+
+
+@main("FreeLancelot") {
+	<center>
+		<article style="margin-top:50px;">
+			<div>
+			@if(searchResults != null) {
+				@for((searchTerms, searchResultlist) <- searchResults){
+					<h1>Skill : @searchTerms </h1>
+					<table>
+						<tr>
+							<th>Owner_id</th>
+							<th>Date</th>
+							<th>Title</th>
+							<th>Type</th>
+							<th>Skills</th>
+						</tr>
+						@for(result <- searchResultlist.getResult()){
+							<tr>
+								<td><a href='@routes.HomeController.profile(result.getOwner_id())'>@result.getOwner_id()</a></td>
+								<td>@result.getDate()</td>
+								<td>@result.getTitle()</td>
+								<td>@result.getType()</td>
+								<td>@for((key,value) <- result.getSkills()){
+									<u><a href="@routes.HomeController.skill(value,key)">@key</a></u>
+								}
+								</td>
+							</tr>
+						}
+					</table>
+				}
+			}
+			</div>
+		</article>
+	</center>
+}

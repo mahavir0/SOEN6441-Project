@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SearchProfile.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">businesslogic</a> &gt; <span class="el_source">SearchProfile.java</span></div><h1>SearchProfile.java</h1><pre class="source lang-java linenums">package businesslogic;
+
+import model.Profile;
+import model.projectInfo;
+import model.Resultlist;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.text.DateFormat;
+
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
+
+/**
+ * &lt;p&gt;This class fetches the information of a user's profile&lt;/p&gt;
+ * @author Harshal
+ */
+<span class="fc" id="L23">public class SearchProfile {</span>
+<span class="fc" id="L24">   public String API = &quot;https://www.freelancer.com/api/users/0.1/portfolios/?limit=10&amp;compact=true&amp;portfolio_details=true&amp;user_details=true&amp;user_qualification_details=true&amp;user_jobs=true&amp;user_portfolio_details=true&amp;user_recommendations=true&amp;count=true&amp;user_profile_description=true&amp;users[]=&quot;;</span>
+<span class="fc" id="L25">    public String API1 =&quot;https://www.freelancer.com/api/projects/0.1/projects/?limit=10&amp;full_description=true&amp;owners[]=&quot;;</span>
+
+
+    /**
+     * &lt;p&gt;This method makes an asynchronous call to getProfileResult method&lt;/p&gt;
+     * @param id Owner id of a user
+     * @return LinkedHashMap containing Search String and Profile information
+     */
+    public CompletionStage&lt;LinkedHashMap&lt;String, Profile&gt;&gt; getResult(String id) {
+<span class="fc" id="L34">        return CompletableFuture.supplyAsync(()-&gt; this.getProfileResult(id));</span>
+    }
+
+    /**
+     * &lt;p&gt;This method calls the api to fetch details of a user's profile&lt;/p&gt;
+     * @param id It is Owner Id of a user
+     * @return LinkedHashMap containing the information of a user's profile
+     */
+    public LinkedHashMap&lt;String, Profile&gt; getProfileResult(String id) {
+<span class="fc" id="L43">        Profile p = new Profile();</span>
+<span class="fc" id="L44">        LinkedHashMap&lt;String, Profile&gt; resultmap = new LinkedHashMap&lt;String, Profile&gt;();</span>
+<span class="fc" id="L45">        List&lt;projectInfo&gt; projectInfos = new ArrayList&lt;projectInfo&gt;();</span>
+        try {
+<span class="fc" id="L47">            URL url = new URL(this.API + id);</span>
+<span class="fc" id="L48">            URL url1 = new URL(this.API1 + id);</span>
+<span class="fc" id="L49">            HttpURLConnection conn = (HttpURLConnection) url.openConnection();</span>
+<span class="fc" id="L50">            HttpURLConnection conn1 = (HttpURLConnection) url1.openConnection();</span>
+<span class="fc" id="L51">            conn.setRequestMethod(&quot;GET&quot;);</span>
+<span class="fc" id="L52">            conn1.setRequestMethod(&quot;GET&quot;);</span>
+<span class="fc" id="L53">            conn1.connect();</span>
+<span class="fc" id="L54">            conn.connect();</span>
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">            if(conn1.getResponseCode() == 200)</span>
+            {
+<span class="fc" id="L57">                Scanner scan = new Scanner(url1.openStream());</span>
+<span class="fc" id="L58">                String temp = &quot;&quot;;</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">                while (scan.hasNext()) {</span>
+<span class="fc" id="L60">                    temp = temp + scan.nextLine();</span>
+                }
+<span class="fc" id="L62">                JSONObject json = null;</span>
+<span class="fc" id="L63">                json = new JSONObject(temp);</span>
+<span class="fc" id="L64">                JSONObject result = null;</span>
+<span class="fc" id="L65">                result = json.getJSONObject(&quot;result&quot;);</span>
+
+<span class="fc" id="L67">                JSONArray temp_Projects = null;</span>
+<span class="fc" id="L68">                temp_Projects = result.getJSONArray(&quot;projects&quot;);</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">                for(int i=0;i&lt;temp_Projects.length();i++){</span>
+<span class="fc" id="L70">                    JSONObject obj = temp_Projects.getJSONObject(i);</span>
+<span class="fc" id="L71">                    projectInfo pi = new projectInfo();</span>
+<span class="fc" id="L72">                    pi.setTitle(obj.get(&quot;title&quot;).toString());</span>
+<span class="fc" id="L73">                    pi.setProjectid(obj.get(&quot;id&quot;).toString());</span>
+
+<span class="fc" id="L75">                    pi.setDescription(obj.get(&quot;description&quot;).toString());</span>
+
+<span class="fc" id="L77">                    Date date = new Date(Long.parseLong(obj.get(&quot;submitdate&quot;).toString()+&quot;000&quot;));</span>
+<span class="fc" id="L78">                    DateFormat simple = new SimpleDateFormat(&quot;dd MMM yyyy&quot;);</span>
+<span class="fc" id="L79">                    pi.setSubmitdate(simple.format(date));</span>
+<span class="fc" id="L80">                    projectInfos.add(pi);</span>
+                }
+            }
+<span class="pc bpc" id="L83" title="1 of 2 branches missed.">            if (conn.getResponseCode() == 200)</span>
+            {
+<span class="fc" id="L85">                Scanner scan = new Scanner(url.openStream());</span>
+<span class="fc" id="L86">                String temp = &quot;&quot;;</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">                while (scan.hasNext()) {</span>
+<span class="fc" id="L88">                    temp = temp + scan.nextLine();</span>
+                }
+<span class="fc" id="L90">                JSONObject json = null;</span>
+<span class="fc" id="L91">                json = new JSONObject(temp);</span>
+<span class="fc" id="L92">                JSONObject result = null;</span>
+<span class="fc" id="L93">                result = json.getJSONObject(&quot;result&quot;);</span>
+
+<span class="fc" id="L95">                JSONObject temp_users = null;</span>
+<span class="fc" id="L96">                temp_users =  result.getJSONObject(&quot;users&quot;);</span>
+<span class="fc" id="L97">                JSONObject users = null;</span>
+<span class="fc" id="L98">                users = temp_users.getJSONObject(id);</span>
+
+<span class="fc" id="L100">                JSONObject obj = null;</span>
+<span class="fc" id="L101">                obj = users;</span>
+<span class="fc" id="L102">                p.setProjects(projectInfos);</span>
+<span class="fc" id="L103">                p.setId(this.getJSONResult(obj,&quot;id&quot;));</span>
+<span class="fc" id="L104">                p.setUsername(this.getJSONResult(obj,&quot;username&quot;));</span>
+<span class="fc" id="L105">                LinkedHashMap&lt;String, String&gt; skillsmap = new LinkedHashMap&lt;String, String&gt;();</span>
+<span class="fc" id="L106">                JSONArray skills = null;</span>
+<span class="fc" id="L107">                skills = obj.getJSONArray(&quot;jobs&quot;);</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">                for (int j = 0; j &lt; skills.length(); j++) {</span>
+<span class="fc" id="L109">                    JSONObject skill = null;</span>
+<span class="fc" id="L110">                    skill = skills.getJSONObject(j);</span>
+<span class="fc" id="L111">                    skillsmap.put(this.getJSONResult(skill ,&quot;name&quot;) , this.getJSONResult(skill,&quot;id&quot;));</span>
+                }
+<span class="fc" id="L113">                p.setSkills(skillsmap);</span>
+<span class="fc" id="L114">                p.setProfiledescription(this.getJSONResult(obj,&quot;profile_description&quot;));</span>
+<span class="fc" id="L115">                p.setHourylyrate(this.getJSONResult(obj,&quot;hourly_rate&quot;));</span>
+<span class="fc" id="L116">                Date date = new Date(Long.parseLong(this.getJSONResult(obj,&quot;registration_date&quot;)+&quot;000&quot;));</span>
+<span class="fc" id="L117">                DateFormat simple = new SimpleDateFormat(&quot;dd MMM yyyy&quot;);</span>
+<span class="fc" id="L118">                p.setRegistrationdate(simple.format(date));</span>
+<span class="fc" id="L119">                p.setDisplayname(this.getJSONResult(obj,&quot;display_name&quot;));</span>
+<span class="fc" id="L120">                p.setPublicname(this.getJSONResult(obj,&quot;public_name&quot;));</span>
+<span class="fc" id="L121">                p.setCompany(this.getJSONResult(obj,&quot;company&quot;));</span>
+<span class="fc" id="L122">                JSONObject location = null;</span>
+<span class="fc" id="L123">                location =  obj.getJSONObject(&quot;location&quot;);</span>
+<span class="fc" id="L124">                JSONObject country = null;</span>
+<span class="fc" id="L125">                country = location.getJSONObject(&quot;country&quot;);</span>
+<span class="fc" id="L126">                JSONObject primary_currency = null;</span>
+<span class="fc" id="L127">                primary_currency = obj.getJSONObject(&quot;primary_currency&quot;);</span>
+<span class="fc" id="L128">                p.setCode(this.getJSONResult(primary_currency,&quot;code&quot;));</span>
+<span class="fc" id="L129">                p.setSign(this.getJSONResult(primary_currency,&quot;sign&quot;));</span>
+<span class="fc" id="L130">                p.setCurrencyname(this.getJSONResult(primary_currency,&quot;name&quot;));;</span>
+<span class="fc" id="L131">                JSONObject status = null;</span>
+<span class="fc" id="L132">                status = obj.getJSONObject(&quot;status&quot;);</span>
+<span class="fc" id="L133">                p.setEmailverified(this.getJSONResult(status,&quot;email_verified&quot;));</span>
+<span class="fc" id="L134">                p.setCountry(this.getJSONResult(country,&quot;name&quot;));</span>
+<span class="fc" id="L135">                p.setCity(this.getJSONResult(location,&quot;city&quot;));</span>
+<span class="fc" id="L136">                p.setRecommendations(this.getJSONResult(obj,&quot;recommendations&quot;));</span>
+<span class="fc" id="L137">                p.setRole(this.getJSONResult(obj,&quot;role&quot;));</span>
+<span class="fc" id="L138">                p.setChosenrole(this.getJSONResult(obj,&quot;chosen_role&quot;));</span>
+<span class="fc" id="L139">                p.setPrimarylanguage(this.getJSONResult(obj,&quot;primary_language&quot;));</span>
+<span class="fc" id="L140">                p.setLimitedaccount(this.getJSONResult(obj,&quot;limited_account&quot;));</span>
+<span class="fc" id="L141">                JSONObject timezone =null;</span>
+<span class="fc" id="L142">                timezone = obj.getJSONObject(&quot;timezone&quot;);</span>
+<span class="fc" id="L143">                p.setTimezone(this.getJSONResult(timezone,&quot;timezone&quot;));</span>
+<span class="fc" id="L144">                LinkedHashMap&lt;String, String&gt; qualificationsmap = new LinkedHashMap&lt;String, String&gt;();</span>
+<span class="fc" id="L145">                JSONArray qualifications = null;</span>
+<span class="fc" id="L146">                qualifications= obj.getJSONArray(&quot;qualifications&quot;);</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">                for (int j = 0; j &lt; qualifications.length(); j++) {</span>
+<span class="fc" id="L148">                    JSONObject qualification = null;</span>
+<span class="fc" id="L149">                    qualification = qualifications.getJSONObject(j);</span>
+<span class="fc" id="L150">                    qualificationsmap.put(this.getJSONResult(qualification ,&quot;name&quot;) , this.getJSONResult(qualification ,&quot;id&quot;));</span>
+                }
+<span class="fc" id="L152">                p.setQualifications(qualificationsmap);</span>
+            }
+<span class="fc" id="L154">            resultmap.put(p.getPublicname(),p);</span>
+<span class="fc" id="L155">            conn.disconnect();</span>
+<span class="fc" id="L156">            conn1.disconnect();</span>
+<span class="fc" id="L157">        } catch (Exception e) {</span>
+<span class="fc" id="L158">            System.out.println(e);</span>
+
+<span class="fc" id="L160">        }</span>
+<span class="fc" id="L161">        return resultmap;</span>
+    }
+
+    /**
+     * &lt;p&gt;This method converts JSON Object to String&lt;/p&gt;
+     * @param obj JSON Object
+     * @param key key of the JSON Object
+     * @return It returns the value stored with the key as String
+     */
+    public String getJSONResult(JSONObject obj,String key){
+<span class="fc" id="L171">        String result = null;</span>
+        try{
+<span class="fc" id="L173">            result = obj.get(key).toString();</span>
+<span class="nc" id="L174">        }catch(JSONException e){</span>
+<span class="nc" id="L175">            result = null;</span>
+<span class="fc" id="L176">        }</span>
+<span class="fc" id="L177">        return result;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

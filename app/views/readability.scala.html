@@ -1,0 +1,23 @@
+@import model.Searchphraseresult
+@import model.Resultlist
+@import java.util
+@(searchResults : Map[String, String])
+
+
+@main("FreeLancelot") {
+    <center>
+        <article style="margin-top:50px;">
+            <div>
+                <h4>Readability for an Individual Project</h4>
+                @for( (keys,value) <- searchResults){
+                    @if(keys.equals("FleshIndex")){
+                        <p>Flesch Readability Index: @value</p>
+                    }
+                    @if(keys.equals("FKGL")){
+                        <p>FKGL: @value</p>
+                    }
+                }
+            </div>
+        </article>
+    </center>
+}

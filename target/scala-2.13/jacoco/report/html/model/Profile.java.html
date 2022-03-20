@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Profile.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=2;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Jacoco Coverage Report</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">Profile.java</span></div><h1>Profile.java</h1><pre class="source lang-java linenums">package model;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+
+/**
+ * &lt;p&gt;This model class stores the information to be displayed on Employer's Profile Page&lt;/p&gt;
+ * @author Harshal
+ */
+<span class="fc" id="L11">public class Profile</span>
+{
+    String id;
+    String username;
+    String displayname;
+    String publicname;
+<span class="fc" id="L17">    private LinkedHashMap&lt;String, String&gt; skills =null;</span>
+    String hourylyrate;
+    String title;
+    String profiledescription;
+    String recommendations;
+    String country;
+    String city;
+    String company;
+<span class="fc" id="L25">    private LinkedHashMap&lt;String, String&gt; qualifications =null;</span>
+    String role;
+    String registrationdate;
+    String chosenrole;
+    String primarylanguage;
+    String limitedaccount;
+    String code;
+    String sign;
+    String emailverified;
+    String currencyname;
+    String timezone;
+<span class="fc" id="L36">    List&lt;projectInfo&gt; projects =null;</span>
+    /**
+     * @return the id
+     */
+    public String getId() {
+<span class="fc" id="L41">        return id;</span>
+    }
+    /**
+     * @param id the id to set
+     */
+    public void setId(String id) {
+<span class="fc" id="L47">        this.id = id;</span>
+<span class="fc" id="L48">    }</span>
+    /**
+     * @return the Registration Date of the project
+     */
+<span class="fc" id="L52">    public String getRegistrationdate(){return registrationdate;}</span>
+    /**
+     * @param  registrationdate Registration Date to set
+     */
+<span class="fc" id="L56">    public void setRegistrationdate(String registrationdate) {   this.registrationdate = registrationdate;}</span>
+
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+<span class="fc" id="L62">        return username;</span>
+    }
+
+    /**
+     * @return Chosen Role
+     */
+    public String getChosenrole() {
+<span class="fc" id="L69">        return chosenrole;</span>
+    }
+
+    /**
+     * @param chosenrole Role chosen by employer
+     */
+    public void setChosenrole(String chosenrole) {
+<span class="fc" id="L76">        this.chosenrole = chosenrole;</span>
+<span class="fc" id="L77">    }</span>
+
+    /**
+     * @return Primary Language
+     */
+    public String getPrimarylanguage() {
+<span class="fc" id="L83">        return primarylanguage;</span>
+    }
+
+    /**
+     * @param primarylanguage Primary Language of the employer
+     */
+    public void setPrimarylanguage(String primarylanguage) {
+<span class="fc" id="L90">        this.primarylanguage = primarylanguage;</span>
+<span class="fc" id="L91">    }</span>
+
+    /**
+     * @return Limited Account
+     */
+    public String getLimitedaccount() {
+<span class="fc" id="L97">        return limitedaccount;</span>
+    }
+
+    /**
+     * @param limitedaccount If the account is limited or not
+     */
+    public void setLimitedaccount(String limitedaccount) {
+<span class="fc" id="L104">        this.limitedaccount = limitedaccount;</span>
+<span class="fc" id="L105">    }</span>
+
+    /**
+     * @return Code of the project
+     */
+    public String getCode() {
+<span class="fc" id="L111">        return code;</span>
+    }
+
+    /**
+     * @param code Code to set
+     */
+    public void setCode(String code) {
+<span class="fc" id="L118">        this.code = code;</span>
+<span class="fc" id="L119">    }</span>
+
+    /**
+     * @return Sign of the project
+     */
+    public String getSign() {
+<span class="fc" id="L125">        return sign;</span>
+    }
+
+    /**
+     * @param sign Sign of the project
+     */
+    public void setSign(String sign) {
+<span class="fc" id="L132">        this.sign = sign;</span>
+<span class="fc" id="L133">    }</span>
+
+    /**
+     * @return Email is verified or not
+     */
+    public String getEmailverified() {
+<span class="fc" id="L139">        return emailverified;</span>
+    }
+
+    /**
+     * @param emailverified If email is verified or not
+     */
+    public void setEmailverified(String emailverified) {
+<span class="fc" id="L146">        this.emailverified = emailverified;</span>
+<span class="fc" id="L147">    }</span>
+
+    /**
+     * @return Name of the currency
+     */
+    public String getCurrencyname() {
+<span class="fc" id="L153">        return currencyname;</span>
+    }
+
+    /**
+     * @param currencyname Name of the currency
+     */
+    public void setCurrencyname(String currencyname) {
+<span class="fc" id="L160">        this.currencyname = currencyname;</span>
+<span class="fc" id="L161">    }</span>
+
+    /**
+     * @return Time Zone of the project
+     */
+    public String getTimezone() {
+<span class="fc" id="L167">        return timezone;</span>
+    }
+
+    /**
+     * @param timezone Time zone of the employer
+     */
+    public void setTimezone(String timezone) {
+<span class="fc" id="L174">        this.timezone    = timezone;</span>
+<span class="fc" id="L175">    }</span>
+    /**
+     * @return the username
+     */
+    public void setUsername(String username) {
+<span class="fc" id="L180">        this.username = username;</span>
+<span class="fc" id="L181">    }</span>
+    /**
+     * @return the displayname
+     */
+    public String getDisplayname() {
+<span class="fc" id="L186">        return displayname;</span>
+    }
+    /**
+     * @param displayname the displayname to set
+     */
+    public void setDisplayname(String displayname) {
+<span class="fc" id="L192">        this.displayname = displayname;</span>
+<span class="fc" id="L193">    }</span>
+    /**
+     * @return the publicname
+     */
+    public String getPublicname() {
+<span class="fc" id="L198">        return publicname;</span>
+    }
+    /**
+     * @param publicname the publicname to set
+     */
+    public void setPublicname(String publicname) {
+<span class="fc" id="L204">        this.publicname = publicname;</span>
+<span class="fc" id="L205">    }</span>
+    /**
+     * @return the skills
+     */
+    public HashMap&lt;String, String&gt; getSkills() {
+<span class="fc" id="L210">        return skills;</span>
+    }
+
+    /**
+     * @param skills Skills of the employer
+     */
+    public void setSkills(LinkedHashMap&lt;String, String&gt; skills) {
+<span class="fc" id="L217">      this.skills =   new LinkedHashMap&lt;String, String&gt;();</span>
+<span class="fc" id="L218">      this.skills = skills;</span>
+<span class="fc" id="L219">    }</span>
+   /**
+     * @return the hourylyrate
+     */
+    public String getHourylyrate() {
+<span class="fc" id="L224">        return hourylyrate;</span>
+    }
+    /**
+     * @param hourylyrate the hourylyrate to set
+     */
+    public void setHourylyrate(String hourylyrate) {
+<span class="fc" id="L230">        this.hourylyrate = hourylyrate;</span>
+<span class="fc" id="L231">    }</span>
+    /**
+     * @return the title
+     */
+    public String getTitle() {
+<span class="fc" id="L236">        return title;</span>
+    }
+    /**
+     * @param title the title to set
+     */
+    public void setTitle(String title) {
+<span class="fc" id="L242">        this.title = title;</span>
+<span class="fc" id="L243">    }</span>
+    /**
+     * @return the profiledescription
+     */
+    public String getProfiledescription() {
+<span class="fc" id="L248">        return profiledescription;</span>
+    }
+    /**
+     * @param profiledescription the profiledescription to set
+     */
+    public void setProfiledescription(String profiledescription) {
+<span class="fc" id="L254">        this.profiledescription = profiledescription;</span>
+<span class="fc" id="L255">    }</span>
+    /**
+     * @return the recommendations
+     */
+    public String getRecommendations() {
+<span class="fc" id="L260">        return recommendations;</span>
+    }
+    /**
+     * @param recommendations the recommendations to set
+     */
+    public void setRecommendations(String recommendations) {
+<span class="fc" id="L266">        this.recommendations = recommendations;</span>
+<span class="fc" id="L267">    }</span>
+    /**
+     * @return the country
+     */
+    public String getCountry() {
+<span class="fc" id="L272">        return country;</span>
+    }
+    /**
+     * @param country the country to set
+     */
+    public void setCountry(String country) {
+<span class="fc" id="L278">        this.country = country;</span>
+<span class="fc" id="L279">    }</span>
+    /**
+     * @return the city
+     */
+    public String getCity() {
+<span class="fc" id="L284">        return city;</span>
+    }
+    /**
+     * @param city the city to set
+     */
+    public void setCity(String city) {
+<span class="fc" id="L290">        this.city = city;</span>
+<span class="fc" id="L291">    }</span>
+    /**
+     * @return the company
+     */
+    public String getCompany() {
+<span class="fc" id="L296">        return company;</span>
+    }
+    /**
+     * @param company the company to set
+     */
+    public void setCompany(String company) {
+<span class="fc" id="L302">        this.company = company;</span>
+<span class="fc" id="L303">    }</span>
+    /**
+     * @return the qualification
+     */
+    public HashMap&lt;String, String&gt; getQualifications() {
+<span class="fc" id="L308">        return qualifications;</span>
+    }
+
+    /**
+     * @param qualifications Qualifications of the employer
+     */
+    public void setQualifications(LinkedHashMap&lt;String, String&gt;  qualifications) {
+<span class="fc" id="L315">        this.qualifications = new LinkedHashMap&lt;String, String&gt;();</span>
+<span class="fc" id="L316">        this.qualifications = qualifications;</span>
+<span class="fc" id="L317">    }</span>
+
+    /**
+     * @return the role
+     */
+    public String getRole() {
+<span class="fc" id="L323">        return role;</span>
+    }
+    /**
+     * @param role the role to set
+     */
+    public void setRole(String role) {
+<span class="fc" id="L329">        this.role = role;</span>
+<span class="fc" id="L330">    }</span>
+    /**
+     * @return the projects
+     */
+    public List&lt;projectInfo&gt; getProjects() {
+<span class="fc" id="L335">        return projects;</span>
+    }
+    /**
+     * @param projects the projects to set
+     */
+  public void setProjects(List&lt;projectInfo&gt; projects) {
+<span class="fc" id="L341">        this.projects = projects;</span>
+<span class="fc" id="L342">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

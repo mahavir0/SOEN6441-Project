@@ -1,0 +1,13 @@
+#Successful Tests
+#Sun Mar 20 17:58:12 EDT 2022
+model.ResultlistTest=1647813478757
+BusinessLogic.SearchProfileTest=1647813492794
+ControllersTest.HomeControllerTest=1647813492359
+model.SearchphraseresultTest=1647813478744
+BusinessLogic.SearchSkillTest=1647813492805
+model.ProfileTest=1647813478608
+BusinessLogic.WordStatsTest=1647813492773
+BusinessLogic.SearchPhraseTest=1647813492787
+BusinessLogic.SearchFleschIndexTest=1647813492810
+model.ProjectinfoTest=1647813492779
+BusinessLogic.SessionTest=1647813492800
