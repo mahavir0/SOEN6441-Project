@@ -40,13 +40,13 @@ public class SearchFleschIndex {
                 .map(w -> w.replaceAll("\\p{Punct}", "").split(" "))
                 .flatMap(Arrays::stream)
                 .count();
-        System.out.println(wordCount);
+
 
         sentenceCount = desc.stream()
                 .map(w -> w.split("[!?.:]+"))
                 .flatMap(Arrays::stream)
                 .count();
-        System.out.println(sentenceCount);
+
 
         List<String> syllable = desc.stream()
                 .map(o -> o.replaceAll("[!?.:;]+", "").split(" "))
@@ -60,7 +60,12 @@ public class SearchFleschIndex {
                 .map(o -> o.length())
                 .reduce(0, (a,b) -> a+b);
 
-        float fleshIndex = (float) (206.835 - 84.6 *(syllableCount / wordCount) - 1.015 * (wordCount / sentenceCount));
+        float fleshIndex = 0;
+        try {
+            fleshIndex = (float) (206.835 - 84.6 * (syllableCount / wordCount) - 1.015 * (wordCount / sentenceCount));
+        }catch(Exception e){
+            fleshIndex = 0;
+        }
         return Math.round(fleshIndex);
 
     }
@@ -71,7 +76,12 @@ public class SearchFleschIndex {
      * @return Flesch Kincaid Grade Level
      */
     public float getFkgl(int fleschIndex){
-        float fkgl = (float)(0.39*(wordCount/sentenceCount)+ 11.8 * (syllableCount/wordCount)-15.59);
+        float fkgl = 0;
+        try {
+            fkgl = (float) (0.39 * (wordCount / sentenceCount) + 11.8 * (syllableCount / wordCount) - 15.59);
+        }catch(Exception e){
+            fkgl = 0;
+        }
         return fkgl;
     }
 
